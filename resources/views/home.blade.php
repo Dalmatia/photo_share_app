@@ -2,22 +2,31 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+    <div class="jumbotron jumbotron-fluid">
+        <h1 class="display-4">
+            写真をシェアする
+        </h1>
+        <p class="lead">
+            あなたの写真を他の人とシェアする
+        </p>
+    </div>
+    <div class="row">
+        @foreach($albums as $album)
+        <div class="col-lg-3">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+                <img src="{{ asset('album') }}/{{ $album->image }}" class="card-img-top">
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <h5 class="card-title">
+                        <center>{{ $album->name }}</center>
+                        <center>
+                            <a href="{{ route('view.album', [$album->slug, $album->id]) }}" class="btn btn-primary">アルバムを見る</a>
+                        </center>
+                    </h5>
                 </div>
             </div>
         </div>
+        @endforeach
     </div>
+    {{ $albums->links() }}
 </div>
 @endsection

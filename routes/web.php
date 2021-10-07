@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlbumController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,15 +16,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 // アルバム閲覧
-Route::get('/albums/{slug}/{id}', [GalleryController::class, 'viewAlbum']);
+Route::get('/albums/{slug}/{id}', [GalleryController::class, 'viewAlbum'])->name('view.album');
 // アルバム取得
 Route::get('/getAlbums', [AlbumController::class, 'getAlbums'])->middleware('auth');
 // 写真取得
