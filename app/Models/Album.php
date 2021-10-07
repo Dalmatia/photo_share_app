@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Category;
 use App\Models\Image;
+use App\Models\User;
 
 class Album extends Model
 {
@@ -21,5 +22,10 @@ class Album extends Model
     public function albumImages()
     {
         return $this->hasMany(Image::class, 'album_id', 'id');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }

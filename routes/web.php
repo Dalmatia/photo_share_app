@@ -22,9 +22,12 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+// ホーム画面
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
+//
+Route::get('/user/profile/{id}', [FrontendController::class, 'userAlbum'])->name('user.album');
 // アルバム閲覧
 Route::get('/albums/{slug}/{id}', [GalleryController::class, 'viewAlbum'])->name('view.album');
 // アルバム取得
