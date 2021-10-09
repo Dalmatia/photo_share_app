@@ -21,6 +21,9 @@
     <div class="card-body">
       @foreach($albums as $album)
       <p>
+        @if(Auth::check()&&auth()->user()->id!=$userId)
+        <follow user-id="{{ $userId }}" follows="{{ $follows }}"></follow>
+        @endif
         作成者: <a href="{{ route('user.album', [$album->user_id]) }}">
           {{ $album->user->name }}
         </a>

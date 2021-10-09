@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AlbumController;
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\FrontendController;
 use Illuminate\Support\Facades\Route;
@@ -26,7 +27,7 @@ Auth::routes();
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
-//
+// プロフィール画面
 Route::get('/user/profile/{id}', [FrontendController::class, 'userAlbum'])->name('user.album');
 // アルバム閲覧
 Route::get('/albums/{slug}/{id}', [GalleryController::class, 'viewAlbum'])->name('view.album');
@@ -48,5 +49,6 @@ Route::put('albums/{id}/edit', [AlbumController::class, 'update'])->middleware('
 Route::delete('/albums/{id}/delete', [AlbumController::class, 'destroy'])->middleware('auth');
 // 画像アップロード
 Route::get('upload/images/{id}', [GalleryController::class, 'create'])->middleware('auth');
-
 Route::post('uploadImage', [GalleryController::class, 'upload'])->middleware('auth');
+// フォロー機能
+Route::post('/follow', [FollowController::class, 'followUnfollow']);

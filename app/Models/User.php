@@ -42,4 +42,14 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function following()
+    {
+        return $this->belongsToMany(User::class, 'followers', 'follower_id', 'following_id');
+    }
+
+    public function amIfollowing($userId)
+    {
+        return \DB::table('followers')->where('follower_id', auth()->user()->id)->where('following_id', $userId)->exists(); 
+    }
 }
