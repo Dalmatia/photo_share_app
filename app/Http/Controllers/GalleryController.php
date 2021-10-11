@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Image;
 use App\Models\Album;
+use App\Models\User;
 
 class GalleryController extends Controller
 {
@@ -30,7 +31,7 @@ class GalleryController extends Controller
 
         foreach ($request->file('files') as $file) {
             $name = $file->hashName();
-            $file->move(public_path().'/images/', $name);
+            $file->move(public_path() . '/images/', $name);
 
             $file = new Image;
             $file->album_id = $request->album_id;
@@ -55,6 +56,12 @@ class GalleryController extends Controller
     public function viewAlbum($slug, $id)
     {
         $albums = Album::with('albumImages')->where('slug', $slug)->where('id', $id)->get();
-        return view('album.show', compact('albums'));
+
+        if (\Auth::check()) {
+            $userId = Album::where('id', $id)->first()->user_id;
+            $follows = (new User)->amIfollowing($userId);
+        }
+
+        return view('album.show', compact('albums', 'follows', 'userId'));
     }
 }

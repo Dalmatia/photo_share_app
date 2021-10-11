@@ -64,9 +64,13 @@
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 <img src="{{ Storage::url(auth()->user()->profilePic) }}" width="25">
+                                <span class="caret"></span>
+                                {{ auth()->user()->name }}
                             </a>
-
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('profile') }}">
+                                    {{ __('プロフィール画面') }}
+                                </a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                     {{ __('ログアウト') }}

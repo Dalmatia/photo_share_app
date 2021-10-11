@@ -2,8 +2,15 @@
 
 @section('content')
 <div class="container">
+    @if(Auth::check()&&auth()->user()->bgpic)
+    <img src="{{ Storage::url(auth()->user()->bgpig) }}">
+    @else
     <img src="{{ asset('banner') }}/pexels-ena-marinkovic-3838285.jpg" style="width: 100%">
+    @endif
     <br><br>
+    @if(Auth::check()&&auth()->user()->id!=$userId)
+    <follow user-id="{{ $userId }}" follows="{{ $follows }}"></follow>
+    @endif
     <div class="row">
         @foreach($albums as $album)
         <div class="col-lg-3">
