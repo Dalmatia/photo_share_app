@@ -20,6 +20,8 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 Vue.component('avatar', require('./components/AvatarComponent.vue').default);
 
+Vue.component('bg', require('./components/BackgroundPictureComponent.vue').default);
+
 Vue.component('follow', require('./components/FollowComponent.vue').default);
 
 Vue.component('upload', require('./components/UploadComponent.vue').default);

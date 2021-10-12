@@ -7,25 +7,24 @@
       <div class="card">
         <div class="card-body">
           <ul class="nav nav-tabs" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link" href="#profile" role="tab" data-toggle="tab">
-                プロフィール
-              </a>
-            </li>
-            <li class="nav-item">
+            <li class="nav-item active">
               <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">
                 フォロー中
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#references" role="tab" data-toggle="tab">
+              <a class="nav-link" href="#profilePic" role="tab" data-toggle="tab">
                 プロフィール画像
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bgpic" role="tab" data-toggle="tab">
+                背景画像
               </a>
             </li>
           </ul>
           <div class="tab-content">
-            プロフィール画像を管理する
-            <div role="tabpanel" class="tab-pane fade" id="buzz">
+            <div role="tabpanel" class="tab-pane active" id="buzz">
               @foreach($followings as $follow)
               <p> {{$follow->userFollow->name}}
                 <a href="{{route('user.album',[$follow->userFollow->id])}}">
@@ -39,8 +38,11 @@
               </p>
               @endforeach
             </div>
-            <div role="tabpanel" class="tab-pane fade" id="references">
+            <div role="tabpanel" class="tab-pane fade" id="profilePic">
               <avatar userid="{{ auth()->user()->id }}"></avatar>
+            </div>
+            <div role="tabpanel" class="tab-pane fade" id="bgpic">
+              <bg userid="{{ auth()->user()->id }}"></bg>
             </div>
           </div>
         </div>

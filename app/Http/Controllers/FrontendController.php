@@ -21,6 +21,10 @@ class FrontendController extends Controller
             $userId = $id;
             $follows = (new User)->amIfollowing($userId);
         }
-        return view('user-album', compact('albums', 'userId', 'follows'));
+
+        $user = User::where('id', $id)->first();
+        $userBgPic = $user->bgpic;
+
+        return view('user-album', compact('albums', 'userId', 'follows', 'userBgPic'));
     }
 }

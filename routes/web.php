@@ -24,17 +24,18 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 // プロフィール画面
-Route::get('/profile', [FollowController::class, 'profile'])->name('profile');
+Route::get('/profile', [FollowController::class, 'profile'])->name('profile')->middleware('auth');
 // ユーザーアバター
-Route::get('/user/{id}', [FollowController::class, 'profilePic']);
-Route::post('profile-pic', [FollowController::class, 'updateProfilePic']);
-Route::post('bg-pic', [FollowController::class, 'bgPic'])->name('bg.pic');
+Route::get('/user/{id}', [FollowController::class, 'profilePic'])->middleware('auth');
+Route::post('profile-pic', [FollowController::class, 'updateProfilePic'])->middleware('auth');
+Route::get('/user/bg/{id}', [FollowController::class, 'userbgPic'])->middleware('auth');
+Route::post('bg-pic', [FollowController::class, 'updatebgPic'])->name('bg.pic')->middleware('auth');
 // ホーム画面
 Route::get('/', [FrontendController::class, 'index'])->name('index');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 // フォロー機能
-Route::post('/follow', [FollowController::class, 'followUnfollow']);
+Route::post('/follow', [FollowController::class, 'followUnfollow'])->middleware('auth');
 // プロフィール画面
 Route::get('/user/profile/{id}', [FrontendController::class, 'userAlbum'])->name('user.album');
 // アルバム閲覧

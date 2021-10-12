@@ -47,4 +47,24 @@ class FollowController extends Controller
 
         return $user->profilePic;
     }
+
+    public function updatebgPic(Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'required|mimes:jpeg, jpg, png'
+        ]);
+
+        $image = $request->image->store('public/avatar');
+        $authUser = auth()->user()->id;
+        $user = User::where('id', $authUser)->update(['bgpic' => $image]);
+
+        return redirect()->back();
+    }
+
+    public function userbgPic($id)
+    {
+        $user = User::find($id);
+
+        return $user->bgpic;
+    }
 }

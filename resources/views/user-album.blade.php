@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-    @if(Auth::check()&&auth()->user()->bgpic)
-    <img src="{{ Storage::url(auth()->user()->bgpig) }}">
+    @if($userBgPic)
+    <img src="{{ Storage::url($userBgPic) }}" style="width: 100%">
     @else
     <img src="{{ asset('banner') }}/pexels-ena-marinkovic-3838285.jpg" style="width: 100%">
     @endif
