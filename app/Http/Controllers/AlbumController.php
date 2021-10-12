@@ -4,13 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Http\Resources\AlbumResource;
 use App\Models\Album;
+use App\Models\Image;
 
 class AlbumController extends Controller
 {
     public function getAlbums()
     {
-        return $albums = Album::with('category')->where('user_id', auth()->user()->id)->get();
+        return new AlbumResource(Album::with('category')->where('user_id', auth()->user()->id)->paginate(3));
     }
 
     public function index()
