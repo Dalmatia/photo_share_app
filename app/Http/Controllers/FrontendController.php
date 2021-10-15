@@ -27,4 +27,10 @@ class FrontendController extends Controller
 
         return view('user-album', compact('albums', 'userId', 'follows', 'userBgPic'));
     }
+
+    public function albumCategory($id)
+    {
+        $albums = Album::where('category_id', $id)->get();
+        return view('album-category', compact('albums'));
+    }
 }

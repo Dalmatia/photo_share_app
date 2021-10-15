@@ -11,6 +11,7 @@
     @if(Auth::check()&&auth()->user()->id!=$userId)
     <follow user-id="{{ $userId }}" follows="{{ $follows }}"></follow>
     @endif
+    <br>
     <div class="row">
         @foreach($albums as $album)
         <div class="col-lg-3">

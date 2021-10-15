@@ -59,3 +59,5 @@ Route::delete('/albums/{id}/delete', [AlbumController::class, 'destroy'])->middl
 // 画像アップロード
 Route::get('upload/images/{id}', [GalleryController::class, 'create'])->middleware('auth');
 Route::post('uploadImage', [GalleryController::class, 'upload'])->middleware('auth');
+// カテゴリー検索機能
+Route::get('/{id}/category', [FrontendController::class, 'albumCategory'])->name('album.category');

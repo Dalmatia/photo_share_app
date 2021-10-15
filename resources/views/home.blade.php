@@ -19,7 +19,9 @@
                     <h5 class="card-title">
                         <center>{{ $album->name }}</center>
                         <center>
-                            <a href="{{ route('view.album', [$album->slug, $album->id]) }}" class="btn btn-primary">アルバムを見る</a>
+                            <a href="{{ route('view.album', [$album->slug, $album->id]) }}" class="btn btn-primary">
+                                アルバムを見る
+                            </a>
                         </center>
                     </h5>
                 </div>
