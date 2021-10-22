@@ -1,6 +1,6 @@
 <template>
     <nav aria-label="Page navigation example">
-        <ul class="pagination">
+        <ul class="pagination justify-content-center">
             <li
                 class="page-item"
                 :class="{ disabled: meta.current_page === 1 }"

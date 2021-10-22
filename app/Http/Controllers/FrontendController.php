@@ -8,7 +8,7 @@ use App\Models\User;
 
 class FrontendController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $albums = Album::latest()->paginate(50);
         return view('home', compact('albums'));

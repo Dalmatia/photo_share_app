@@ -4,9 +4,9 @@
 <div class="container">
     <ol class="breadcrumb">
       <h3>Album List</h3>
-      <span style="margin-left: 700px;">
+      <span style="margin-left: auto;">
         <a href="{{ route('album.create') }}">
-          <button class="btn btn-primary">新しいアルバムを作成する</button>
+          <button class="btn btn-primary">アルバムを作成する</button>
         </a>
       </span>
     </ol>

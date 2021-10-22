@@ -40202,7 +40202,7 @@ var render = function() {
   return _c(
     "div",
     [
-      _c("table", { staticClass: "table table-image" }, [
+      _c("table", { staticClass: "table table-sm" }, [
         _vm._m(0),
         _vm._v(" "),
         _c(
@@ -40234,8 +40234,8 @@ var render = function() {
                   "a",
                   { attrs: { href: "/albums/" + album.slug + "/" + album.id } },
                   [
-                    _c("button", { staticClass: "btn btn-info" }, [
-                      _vm._v("見る")
+                    _c("button", { staticClass: "btn btn-outline-success" }, [
+                      _vm._v("詳細")
                     ])
                   ]
                 )
@@ -40367,7 +40367,7 @@ var render = function() {
   return _c("nav", { attrs: { "aria-label": "Page navigation example" } }, [
     _c(
       "ul",
-      { staticClass: "pagination" },
+      { staticClass: "pagination justify-content-center" },
       [
         _c(
           "li",

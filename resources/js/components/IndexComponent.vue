@@ -1,6 +1,6 @@
 <template>
     <div>
-        <table class="table table-image">
+        <table class="table table-sm">
             <thead>
                 <tr>
                     <th scope="col">No</th>
@@ -29,7 +29,7 @@
                     <td>{{ album.category.name }}</td>
                     <td>
                         <a :href="'/albums/' + album.slug + '/' + album.id">
-                            <button class="btn btn-info">見る</button>
+                            <button class="btn btn-outline-success">詳細</button>
                         </a>
                     </td>
                     <td>
